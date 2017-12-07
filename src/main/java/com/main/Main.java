@@ -8,17 +8,21 @@ import com.processor.EsRecordIngester;
 import com.univocity.parsers.common.processor.BeanListProcessor;
 
 import java.util.List;
+import java.util.Properties;
 
 public class Main {
 
     public static void main(String args[]) {
+        //LOAD PROPERTIES
+        Properties properties = PropertyLoader.loadProperties();
+
         //EXTRACT PARSE AND INGEST TITLES (4 mins)
         TSVParser<Title> tsvParser = new TSVParser<Title>();
         BeanListProcessor<Title> rowProcessor = new BeanListProcessor<Title>(Title.class);
 
         Timer.startTimer();
         List<Title> titleList = tsvParser.parseFromTsv(
-                "/Users/adityahandadi/Documents/AWS/title.basics.tsv",
+                properties.getProperty("title.input.file"),
                 rowProcessor,
                 title -> "movie".equalsIgnoreCase(title.getTitleType()),
                 "tconst", "titleType", "originalTitle", "startYear");
@@ -36,7 +40,7 @@ public class Main {
 
         Timer.startTimer();
         List<Names> namesLists = namesTSVParser.parseFromTsv(
-                "/Users/adityahandadi/Documents/AWS/name.basics.tsv",
+                properties.getProperty("cast.input.file"),
                 namesProcessor,
                 "nconst", "primaryName");
         Timer.stopTimer();
@@ -53,7 +57,7 @@ public class Main {
 
         Timer.startTimer();
         List<TitleNamesMappings> mappingsList = mappingsTSVParser.parseFromTsv(
-                "/Users/adityahandadi/Documents/AWS/title.principals.tsv",
+                properties.getProperty("mapping.input.file"),
                 mappingsProcessor,
                 "tconst", "principalCast");
         Timer.stopTimer();

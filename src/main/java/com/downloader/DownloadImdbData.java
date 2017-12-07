@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Properties;
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
@@ -13,6 +14,7 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
+import com.main.PropertyLoader;
 
 /**
  * Sample class for downloading name.basics.tsv.gz from the 'current' folder in the
@@ -21,12 +23,15 @@ import com.amazonaws.services.s3.model.S3Object;
  * Use with AWS Java SDK 1.11.156 or later.
  */
 
-public class GetObject {
-    //TODO all these env vars
+public class DownloadImdbData {
+
     private static String bucketName = "imdb-datasets";
     private static String key        = "documents/v1/current/title.principals.tsv.gz";
 
-    public static void main(String[] args) throws IOException, InterruptedException {
+//    private static String bucketName = System.getProperty("aws.s3.bucket");
+//    private static String key = System.getProperty("aws.file.path") + System.getProperty("download.file.name");
+
+    public static void downloadFromS3() throws IOException, InterruptedException {
 
         ProfileCredentialsProvider credentialsProvider = new ProfileCredentialsProvider(
                 System.getProperty("user.home") + "/.aws/credentials",
@@ -69,6 +74,7 @@ public class GetObject {
         byte[] buf = new byte[1024 * 1024];
         //TODO file path = env var
         OutputStream out = new FileOutputStream("/Users/adityahandadi/Documents/AWS/title.principals.tsv.gz");
+//        OutputStream out = new FileOutputStream(System.getProperty("download.output.file.path") + System.getProperty("download.file.name"));
         int count;
         while ((count = input.read(buf)) != -1) {
             if (Thread.interrupted()) {
