@@ -113,8 +113,8 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="20" column="6" lean-forward="false" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
+            <state relative-caret-position="280">
+              <caret line="21" column="2" lean-forward="false" selection-start-line="21" selection-start-column="2" selection-end-line="21" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -748,7 +748,7 @@
     </recent_temporary>
   </component>
   <component name="SbtLocalSettings">
-    <option name="lastUpdateTimestamp" value="1512642060705" />
+    <option name="lastUpdateTimestamp" value="1512642123100" />
     <option name="externalProjectsViewState">
       <projects_view />
     </option>
@@ -1010,8 +1010,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="20" column="6" lean-forward="false" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
+        <state relative-caret-position="280">
+          <caret line="21" column="2" lean-forward="false" selection-start-line="21" selection-start-column="2" selection-end-line="21" selection-end-column="2" />
           <folding />
         </state>
       </provider>
